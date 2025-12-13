@@ -1,0 +1,15 @@
+{
+  "steps": [
+    {
+      "name": "Install Dependencies",
+      "run": "npm install"
+    },
+    {
+      "name": "Build Application",
+      "run": "npm run build"
+    }
+  ],
+  "deploy": {
+    "start": "npm run preview -- --host --port $PORT"
+  }
+}
