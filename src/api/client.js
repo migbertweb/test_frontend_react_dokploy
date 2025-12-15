@@ -7,8 +7,18 @@
 import axios from 'axios';
 import useAuthStore from '../store/authStore';
 
+const getBaseUrl = () => {
+  let url = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+  // Si la aplicación se carga por HTTPS, forzar que la API también use HTTPS
+  // para evitar errores de Mixed Content.
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
+    url = url.replace('http://', 'https://');
+  }
+  return url;
+};
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000', // Set VITE_API_URL in your environment
+  baseURL: getBaseUrl(), // Set VITE_API_URL in your environment
   headers: {
     'Content-Type': 'application/json',
   },
