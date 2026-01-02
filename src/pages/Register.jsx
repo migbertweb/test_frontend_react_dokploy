@@ -33,12 +33,9 @@ const Register = () => {
       });
 
       // 2. Auto Login
-      const formData = new FormData();
-      formData.append('username', email);
-      formData.append('password', password);
-
-      const response = await client.post('/token', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      const response = await client.post('/token', {
+        username: email,
+        password: password
       });
 
       setToken(response.data.access_token);

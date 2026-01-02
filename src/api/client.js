@@ -14,7 +14,8 @@ const getBaseUrl = () => {
   if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
     url = url.replace('http://', 'https://');
   }
-  return url;
+  // Eliminar barra final si existe para evitar dobles barras al concatenar
+  return url.endsWith('/') ? url.slice(0, -1) : url;
 };
 
 const client = axios.create({
