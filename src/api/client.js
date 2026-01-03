@@ -3,8 +3,6 @@
  * GitHub: https://github.com/migbertweb
  * Description: Configuración del cliente Axios para realizar peticiones a la API backend.
  * Incluye interceptores para agregar el token JWT y manejar errores 401.
- * el problema era que dokploy estaba detras de un acces de cloudflare.. no era necesario el
- * webhook de github.. porque si se agrega se generan dos deploys al mismo tiempo
  */
 import axios from 'axios';
 import useAuthStore from '../store/authStore';
