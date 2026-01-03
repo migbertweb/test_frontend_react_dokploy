@@ -3,7 +3,7 @@
  * GitHub: https://github.com/migbertweb
  * Description: Configuración del cliente Axios para realizar peticiones a la API backend.
  * Incluye interceptores para agregar el token JWT y manejar errores 401.
- * quite y agregue comentarios para probar el deploy en Dokploy
+ * quite
  * añadi el webhook de github para probar el deploy en Dokploy
  */
 import axios from 'axios';
