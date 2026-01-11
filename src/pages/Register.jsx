@@ -42,11 +42,21 @@ const Register = () => {
       navigate('/');
     } catch (err) {
       console.error(err);
+      let errorMessage = 'Error al registrarse. Intenta nuevamente.';
+      
       if (err.response && err.response.data && err.response.data.detail) {
-        setError(err.response.data.detail);
-      } else {
-        setError('Error al registrarse. Intenta nuevamente.');
+        const detail = err.response.data.detail;
+        if (typeof detail === 'string') {
+          errorMessage = detail;
+        } else if (Array.isArray(detail)) {
+          // Si es una lista de errores (FastAPI validation), extraer los mensajes
+          errorMessage = detail.map(d => d.msg || JSON.stringify(d)).join(', ');
+        } else if (typeof detail === 'object') {
+          errorMessage = JSON.stringify(detail);
+        }
       }
+      
+      setError(errorMessage);
       setLoading(false);
     }
   };
